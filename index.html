@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santosh Singh Rathore — Process Engineer Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#0F1B35;--red:#CC0000;--gold:#E8A020;--silver:#9BA4B8;--light:#F4F5F8;--border:rgba(15,27,53,0.1);}
+body{font-family:'DM Sans',sans-serif;background:var(--light);color:var(--navy);}
+nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:52px;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:white;letter-spacing:2px;}
+.logo span{color:var(--red);}
+.nav-links{display:flex;gap:1.2rem;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.75rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+section{display:none;}
+section.active{display:block;}
+.content{max-width:760px;margin:0 auto;padding:1.5rem;}
+.sh{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--red);}
+.sh h2{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1px;}
+.sh-tag{font-size:0.67rem;color:var(--silver);text-transform:uppercase;letter-spacing:1px;}
+.card{background:white;border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:0.75rem;}
+.hero{background:var(--navy);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(204,0,0,0.15) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:300px;position:relative;z-index:1;}
+.hero-left{padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;}
+.eyebrow{display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;}
+.dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.eye-txt{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.hname{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:white;line-height:1;letter-spacing:3px;}
+.hname span{color:var(--red);}
+.hrole{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:0.4rem;}
+.htag{font-size:0.88rem;color:rgba(255,255,255,0.72);line-height:1.75;margin-top:0.9rem;max-width:340px;font-weight:300;}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;width:100%;}
+.w{background:rgba(15,27,53,0.7);padding:1rem;text-align:center;}
+.wn{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--red);display:block;line-height:1;}
+.wl{font-size:0.6rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.7px;display:block;margin-top:2px;}
+.avatar-wrap{display:flex;justify-content:center;align-items:center;padding:1.5rem 0;}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+.chart-card{background:white;border:1px solid var(--border);border-radius:10px;padding:1rem;}
+.chart-title{font-size:0.72rem;font-weight:500;color:var(--silver);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.75rem;text-align:center;}
+.bar-chart{display:flex;flex-direction:column;gap:0.45rem;}
+.bar-track{flex:1;background:var(--light);border-radius:3px;height:18px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:0.62rem;font-weight:500;color:white;}
+.tl{position:relative;padding-left:1.4rem;}
+.tl::before{content:'';position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--border);}
+.ti{position:relative;margin-bottom:0.9rem;}
+.td{position:absolute;left:-1.4rem;top:5px;width:10px;height:10px;border-radius:50%;background:var(--red);border:2px solid white;box-shadow:0 0 0 1px var(--red);}
+.td.sm{width:7px;height:7px;background:var(--silver);box-shadow:0 0 0 1px var(--silver);left:calc(-1.4rem + 1.5px);top:7px;}
+.th{font-weight:500;font-size:0.88rem;color:var(--red);}
+.tc{font-size:0.8rem;font-weight:500;}
+.tdt{font-size:0.7rem;color:var(--silver);}
+.tp{margin-top:0.3rem;}
+.tp li{font-size:0.76rem;color:#555;line-height:1.65;list-style:none;padding-left:0.75rem;position:relative;}
+.tp li::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.62rem;}
+.pbs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem;}
+.pb{font-size:0.62rem;padding:2px 7px;border-radius:10px;font-weight:500;}
+.pbr{background:#FFF0F0;color:#CC0000;border:1px solid #FFCCCC;}
+.pbb{background:#E6F1FB;color:#185FA5;border:1px solid #B5D4F4;}
+.pbg{background:#FFF8E7;color:#854F0B;border:1px solid #FAC775;}
+.pbgr{background:#F0FAF5;color:#0F6E56;border:1px solid #9FE1CB;}
+.hg{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem;margin-bottom:1rem;}
+.hc{background:white;border:1px solid var(--border);border-radius:10px;padding:1rem;position:relative;overflow:hidden;}
+.hc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);}
+.hc.go::before{background:var(--gold);}
+.hc.gr::before{background:#0F6E56;}
+.hi{font-size:1.4rem;margin-bottom:0.3rem;display:block;}
+.hn{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--navy);display:block;line-height:1;}
+.hl{font-size:0.65rem;color:var(--silver);text-transform:uppercase;letter-spacing:0.7px;display:block;margin-top:2px;}
+.hd{font-size:0.74rem;color:#555;line-height:1.6;margin-top:0.4rem;}
+.sc{background:white;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:0.65rem;}
+.sh2{background:var(--navy);padding:0.85rem 1.1rem;display:flex;align-items:center;gap:0.9rem;}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:rgba(204,0,0,0.35);line-height:1;min-width:32px;}
+.st{font-weight:500;font-size:0.9rem;color:white;}
+.ss{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px;}
+.sb{padding:0.9rem 1.1rem;}
+.sr{background:var(--light);border-radius:6px;padding:0.55rem 0.75rem;font-size:0.78rem;}
+.sr strong{color:var(--red);}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.5rem;}
+.tag{font-size:0.65rem;background:var(--light);border:1px solid var(--border);color:var(--silver);padding:2px 7px;border-radius:4px;}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;}
+.sk{background:white;border:1px solid var(--border);border-radius:8px;padding:0.75rem;}
+.skt{font-size:0.65rem;font-weight:500;text-transform:uppercase;letter-spacing:0.8px;color:var(--red);margin-bottom:0.45rem;}
+.sks{display:flex;flex-wrap:wrap;gap:3px;}
+.skg{font-size:0.68rem;background:var(--light);border:1px solid var(--border);color:var(--navy);padding:2px 6px;border-radius:3px;}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;}
+.pc{background:white;border:1px solid var(--border);border-radius:8px;padding:0.75rem;display:flex;align-items:center;gap:0.65rem;}
+.pn{font-weight:500;font-size:0.82rem;}
+.ps{font-size:0.7rem;color:var(--silver);}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;}
+.cc{background:white;border:1px solid var(--border);border-radius:8px;padding:0.7rem;text-align:center;}
+.ctg{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;}
+.cti{background:white;border:1px solid var(--border);border-radius:8px;padding:0.75rem;display:flex;align-items:center;gap:0.65rem;}
+.cticon{width:30px;height:30px;background:var(--light);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.ctl{font-size:0.65rem;color:var(--silver);}
+.ctv{font-size:0.8rem;font-weight:500;}
+.qt{background:var(--navy);border-radius:10px;padding:1.1rem 1.4rem;margin-bottom:1.1rem;}
+.qtxt{font-size:0.87rem;color:rgba(255,255,255,0.82);line-height:1.8;font-style:italic;}
+.qat{font-size:0.67rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;}
+.pf{display:flex;align-items:center;flex-wrap:wrap;gap:3px;padding:0.55rem 0.75rem;background:var(--light);border-radius:6px;margin:0.4rem 0;}
+.pfs{font-size:0.67rem;background:white;border:1px solid var(--border);border-radius:3px;padding:2px 7px;font-weight:500;}
+.pfs.new{border-color:var(--red);color:var(--red);background:#FFF0F0;}
+.pfa{color:var(--red);font-size:0.75rem;}
+.factory-wrap{background:var(--navy);border-radius:10px;padding:1rem;margin-bottom:1rem;overflow:hidden;}
+footer{background:var(--navy);color:rgba(255,255,255,0.3);text-align:center;padding:0.9rem;font-size:0.7rem;margin-top:1.5rem;}
+footer span{color:var(--red);}
+@media(max-width:600px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hg{grid-template-columns:1fr 1fr;}
+  .charts-grid{grid-template-columns:1fr;}
+  .sg{grid-template-columns:1fr;}
+  .hname{font-size:2.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Santosh Singh <span>Rathore</span></div>
+  <div class="nav-links">
+    <a onclick="show('home')" class="active" id="nav-home">Home</a>
+    <a onclick="show('wins')" id="nav-wins">Wins</a>
+    <a onclick="show('project')" id="nav-project">Project</a>
+    <a onclick="show('experience')" id="nav-experience">Experience</a>
+    <a onclick="show('skills')" id="nav-skills">Skills</a>
+    <a onclick="show('contact')" id="nav-contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow"><div class="dot"></div><span class="eye-txt">Open to Opportunities · H1B Transfer</span></div>
+        <div class="hname">SANTOSH SINGH<br><span>RATHORE</span></div>
+        <div class="hrole">Process · Manufacturing · Quality Engineer</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;letter-spacing:0.3px;">Process Engineer · Metal Technologies Inc. · Bloomington, IN</div>
+        <div class="htag">7 years eliminating root causes others miss. Tesla Semi. GM. Ford. Allison Transmission.</div>
+      </div>
+      <div class="hero-right">
+        <div class="wgrid">
+          <div class="w"><span class="wn">40%</span><span class="wl">Scrap Reduction</span></div>
+          <div class="w"><span class="wn">&gt;1.67</span><span class="wl">Cpk Achieved</span></div>
+          <div class="w"><span class="wn">20%</span><span class="wl">OEE Improvement</span></div>
+          <div class="w"><span class="wn">$10K</span><span class="wl">Saved / Week</span></div>
+          <div class="w"><span class="wn">30%</span><span class="wl">Throughput Gain</span></div>
+          <div class="w"><span class="wn">5hrs</span><span class="wl">Downtime / Week ↓</span></div>
+          <div class="w"><span class="wn">21%</span><span class="wl">Cycle Time ↓</span></div>
+          <div class="w"><span class="wn">100%</span><span class="wl">Tesla Spec</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="avatar-wrap">
+      <svg width="100%" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px;">
+        <!-- Sky/background -->
+        <rect width="720" height="280" fill="#0A1228"/>
+        <!-- Floor -->
+        <rect x="0" y="210" width="720" height="70" fill="#080E1C"/>
+        <line x1="0" y1="210" x2="720" y2="210" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <!-- Floor grid lines -->
+        <line x1="0" y1="230" x2="720" y2="230" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="0" y1="250" x2="720" y2="250" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="120" y1="210" x2="120" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="240" y1="210" x2="240" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="360" y1="210" x2="360" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="480" y1="210" x2="480" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="600" y1="210" x2="600" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <!-- Ceiling lights -->
+        <rect x="80" y="0" width="4" height="20" fill="rgba(255,255,255,0.1)"/>
+        <ellipse cx="82" cy="22" rx="18" ry="6" fill="rgba(255,255,200,0.12)"/>
+        <rect x="250" y="0" width="4" height="20" fill="rgba(255,255,255,0.1)"/>
+        <ellipse cx="252" cy="22" rx="18" ry="6" fill="rgba(255,255,200,0.12)"/>
+        <rect x="420" y="0" width="4" height="20" fill="rgba(255,255,255,0.1)"/>
+        <ellipse cx="422" cy="22" rx="18" ry="6" fill="rgba(255,255,200,0.12)"/>
+        <rect x="590" y="0" width="4" height="20" fill="rgba(255,255,255,0.1)"/>
+        <ellipse cx="592" cy="22" rx="18" ry="6" fill="rgba(255,255,200,0.12)"/>
+
+        <!-- ═══ MACHINE 1: TESLA SEMI EV DRIVE UNIT ═══ -->
+        <!-- Machine body -->
+        <rect x="18" y="80" width="150" height="130" rx="5" fill="#152238" stroke="#1E3A5F" stroke-width="1.5"/>
+        <!-- Machine top panel -->
+        <rect x="18" y="80" width="150" height="25" rx="5" fill="#1A3050" stroke="#1E3A5F" stroke-width="1"/>
+        <!-- Red accent top -->
+        <rect x="18" y="80" width="150" height="4" rx="2" fill="#CC0000"/>
+        <!-- Screen on machine -->
+        <rect x="30" y="115" width="126" height="65" rx="3" fill="#050E1A"/>
+        <!-- Waveform on screen — SPC chart -->
+        <rect x="32" y="117" width="122" height="61" rx="2" fill="#030B15"/>
+        <!-- Grid lines on screen -->
+        <line x1="32" y1="137" x2="154" y2="137" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <line x1="32" y1="147" x2="154" y2="147" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="3"/>
+        <line x1="32" y1="157" x2="154" y2="157" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <line x1="32" y1="167" x2="154" y2="167" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="3"/>
+        <!-- Before line red jagged -->
+        <polyline points="35,165 48,162 58,166 68,160 78,164 88,159 98,163 108,166" fill="none" stroke="#CC0000" stroke-width="1.2" opacity="0.7"/>
+        <!-- After line green stable -->
+        <polyline points="108,163 118,148 128,142 138,138 148,136 154,135" fill="none" stroke="#1DB954" stroke-width="1.5"/>
+        <!-- UCL/LCL dashed -->
+        <line x1="35" y1="143" x2="154" y2="143" stroke="#E8A020" stroke-width="0.8" stroke-dasharray="4,2"/>
+        <!-- Screen label -->
+        <text x="38" y="130" font-family="monospace" font-size="7" fill="#CC0000">CPKANALYSIS</text>
+        <text x="108" y="130" font-family="monospace" font-size="7" fill="#1DB954">0.72→1.67</text>
+        <!-- Machine arm / spindle -->
+        <rect x="75" y="58" width="10" height="28" rx="3" fill="#1E3A5F"/>
+        <circle cx="80" cy="57" r="7" fill="#CC0000" stroke="#FF4444" stroke-width="1"/>
+        <line x1="80" y1="50" x2="80" y2="40" stroke="#CC0000" stroke-width="2"/>
+        <!-- Sparks -->
+        <line x1="80" y1="50" x2="86" y2="42" stroke="#E8A020" stroke-width="1.5" opacity="0.9"/>
+        <line x1="80" y1="50" x2="74" y2="41" stroke="#E8A020" stroke-width="1.5" opacity="0.9"/>
+        <line x1="80" y1="50" x2="88" y2="48" stroke="#FFD700" stroke-width="1" opacity="0.7"/>
+        <line x1="80" y1="50" x2="72" y2="44" stroke="#FFD700" stroke-width="1" opacity="0.7"/>
+        <circle cx="88" cy="41" r="1.5" fill="#E8A020" opacity="0.8"/>
+        <circle cx="73" cy="40" r="1" fill="#FFD700" opacity="0.7"/>
+        <!-- Control panel buttons -->
+        <rect x="30" y="192" width="126" height="14" rx="3" fill="#0F1E30"/>
+        <circle cx="42" cy="199" r="4" fill="#CC0000"/>
+        <circle cx="56" cy="199" r="4" fill="#E8A020"/>
+        <circle cx="70" cy="199" r="4" fill="#1DB954"/>
+        <rect x="82" y="195" width="60" height="8" rx="2" fill="#1A3050"/>
+        <text x="85" y="201" font-family="monospace" font-size="5.5" fill="#4A9EFF">OEE: 85.2%</text>
+        <!-- Program label -->
+        <rect x="18" y="80" width="150" height="14" rx="3" fill="rgba(0,0,0,0)"/>
+        <text x="93" y="91" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" font-weight="500">TESLA SEMI · EV DRIVE UNIT</text>
+        <!-- Part being machined -->
+        <rect x="68" y="63" width="24" height="12" rx="2" fill="#2A4060" stroke="#CC0000" stroke-width="0.8"/>
+
+        <!-- ═══ MACHINE 2: GM ENGINE BLOCK ═══ -->
+        <rect x="200" y="70" width="155" height="140" rx="5" fill="#152238" stroke="#1E3A5F" stroke-width="1.5"/>
+        <rect x="200" y="70" width="155" height="25" rx="5" fill="#1A3050" stroke="#1E3A5F" stroke-width="1"/>
+        <rect x="200" y="70" width="155" height="4" rx="2" fill="#185FA5"/>
+        <!-- Large screen -->
+        <rect x="212" y="105" width="131" height="70" rx="3" fill="#050E1A"/>
+        <rect x="214" y="107" width="127" height="66" rx="2" fill="#030B15"/>
+        <!-- Blueprint/drawing on screen -->
+        <line x1="214" y1="130" x2="341" y2="130" stroke="rgba(100,150,255,0.15)" stroke-width="0.5"/>
+        <line x1="214" y1="145" x2="341" y2="145" stroke="rgba(100,150,255,0.15)" stroke-width="0.5"/>
+        <line x1="214" y1="160" x2="341" y2="160" stroke="rgba(100,150,255,0.15)" stroke-width="0.5"/>
+        <!-- Engine block outline on screen -->
+        <rect x="225" y="112" width="90" height="55" rx="2" fill="none" stroke="#2E6DA4" stroke-width="1"/>
+        <rect x="233" y="118" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <rect x="258" y="118" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <rect x="283" y="118" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <rect x="233" y="136" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <rect x="258" y="136" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <rect x="283" y="136" width="18" height="14" rx="1" fill="none" stroke="#4A9EFF" stroke-width="0.8"/>
+        <!-- Dimensions -->
+        <line x1="225" y1="153" x2="315" y2="153" stroke="#4A9EFF" stroke-width="0.5" stroke-dasharray="2"/>
+        <text x="270" y="163" text-anchor="middle" font-family="monospace" font-size="6" fill="#4A9EFF">L6 · 412mm</text>
+        <text x="217" y="113" font-family="monospace" font-size="6" fill="#185FA5">CpK:1.42</text>
+        <text x="310" y="113" font-family="monospace" font-size="6" fill="#1DB954">✓PASS</text>
+        <!-- Robotic arm -->
+        <line x1="277" y1="70" x2="277" y2="50" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round"/>
+        <line x1="277" y1="55" x2="295" y2="42" stroke="#1E3A5F" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="295" cy="40" r="6" fill="#185FA5" stroke="#4A9EFF" stroke-width="1"/>
+        <circle cx="277" y="70" r="8" fill="#152238" stroke="#1E3A5F" stroke-width="1"/>
+        <!-- Control panel -->
+        <rect x="212" y="186" width="131" height="14" rx="3" fill="#0F1E30"/>
+        <circle cx="224" cy="193" r="4" fill="#185FA5"/>
+        <circle cx="238" cy="193" r="4" fill="#1DB954"/>
+        <rect x="250" y="189" width="80" height="8" rx="2" fill="#1A3050"/>
+        <text x="253" y="195" font-family="monospace" font-size="5.5" fill="#4A9EFF">CYCLE: 38.2s · OEE:82%</text>
+        <text x="277" y="82" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" font-weight="500">GM ENGINE BLOCK · L6</text>
+
+        <!-- ═══ MACHINE 3: ALLISON STATOR HOUSING ═══ -->
+        <rect x="390" y="75" width="150" height="135" rx="5" fill="#152238" stroke="#1E3A5F" stroke-width="1.5"/>
+        <rect x="390" y="75" width="150" height="25" rx="5" fill="#1A3050" stroke="#1E3A5F" stroke-width="1"/>
+        <rect x="390" y="75" width="150" height="4" rx="2" fill="#854F0B"/>
+        <!-- Screen -->
+        <rect x="402" y="110" width="126" height="65" rx="3" fill="#050E1A"/>
+        <rect x="404" y="112" width="122" height="61" rx="2" fill="#030B15"/>
+        <!-- Stator housing cross-section -->
+        <circle cx="465" cy="143" r="28" fill="none" stroke="#854F0B" stroke-width="1.5"/>
+        <circle cx="465" cy="143" r="18" fill="none" stroke="#E8A020" stroke-width="1"/>
+        <circle cx="465" cy="143" r="8" fill="none" stroke="#854F0B" stroke-width="0.8"/>
+        <!-- Stator slots -->
+        <line x1="465" y1="115" x2="465" y2="125" stroke="#E8A020" stroke-width="1"/>
+        <line x1="465" y1="161" x2="465" y2="171" stroke="#E8A020" stroke-width="1"/>
+        <line x1="437" y1="143" x2="447" y2="143" stroke="#E8A020" stroke-width="1"/>
+        <line x1="483" y1="143" x2="493" y2="143" stroke="#E8A020" stroke-width="1"/>
+        <line x1="445" y1="123" x2="452" y2="130" stroke="#E8A020" stroke-width="0.8"/>
+        <line x1="478" y1="123" x2="471" y2="130" stroke="#E8A020" stroke-width="0.8"/>
+        <line x1="445" y1="163" x2="452" y2="156" stroke="#E8A020" stroke-width="0.8"/>
+        <line x1="478" y1="163" x2="471" y2="156" stroke="#E8A020" stroke-width="0.8"/>
+        <text x="452" y="147" font-family="monospace" font-size="7" fill="#E8A020">SH</text>
+        <!-- Measurements -->
+        <text x="406" y="123" font-family="monospace" font-size="6" fill="#854F0B">Ø185.0±0.025</text>
+        <text x="406" y="168" font-family="monospace" font-size="6" fill="#1DB954">Cpk: 1.55 ✓</text>
+        <!-- Arm -->
+        <rect x="460" y="55" width="10" height="25" rx="3" fill="#1E3A5F"/>
+        <circle cx="465" cy="54" r="7" fill="#854F0B" stroke="#E8A020" stroke-width="1"/>
+        <!-- Control panel -->
+        <rect x="402" y="186" width="126" height="14" rx="3" fill="#0F1E30"/>
+        <circle cx="414" cy="193" r="4" fill="#854F0B"/>
+        <circle cx="428" cy="193" r="4" fill="#1DB954"/>
+        <rect x="440" y="189" width="76" height="8" rx="2" fill="#1A3050"/>
+        <text x="443" y="195" font-family="monospace" font-size="5.5" fill="#E8A020">ALLISON · OEE:80%</text>
+        <text x="465" y="87" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" font-weight="500">ALLISON TRANSMISSION · STATOR HOUSING</text>
+
+        <!-- ═══ ENGINEER FIGURE (larger, more detailed) ═══ -->
+        <!-- Shadow -->
+        <ellipse cx="600" cy="213" rx="28" ry="5" fill="rgba(0,0,0,0.4)"/>
+        <!-- Boots -->
+        <rect x="583" y="200" width="14" height="10" rx="2" fill="#0A1228" stroke="#1E3A5F" stroke-width="0.5"/>
+        <rect x="601" y="200" width="14" height="10" rx="2" fill="#0A1228" stroke="#1E3A5F" stroke-width="0.5"/>
+        <!-- Legs -->
+        <rect x="585" y="170" width="11" height="32" rx="3" fill="#1F3A6E"/>
+        <rect x="602" y="170" width="11" height="32" rx="3" fill="#1F3A6E"/>
+        <!-- Safety vest body -->
+        <rect x="578" y="128" width="42" height="46" rx="5" fill="#1F3A6E"/>
+        <!-- Hi-viz vest stripes -->
+        <rect x="578" y="148" width="42" height="5" rx="1" fill="#E8A020" opacity="0.7"/>
+        <rect x="578" y="158" width="42" height="3" rx="1" fill="#E8A020" opacity="0.5"/>
+        <!-- Chest pocket -->
+        <rect x="582" y="132" width="12" height="10" rx="1" fill="#152238" stroke="#1E3A5F" stroke-width="0.5"/>
+        <text x="584" y="139" font-family="monospace" font-size="4" fill="#4A9EFF">MTI</text>
+        <!-- Arms -->
+        <!-- Right arm holding tablet -->
+        <rect x="620" y="132" width="10" height="35" rx="4" fill="#1F3A6E"/>
+        <!-- Tablet -->
+        <rect x="627" y="128" width="22" height="30" rx="2" fill="#050E1A" stroke="#2E6DA4" stroke-width="1"/>
+        <rect x="629" y="130" width="18" height="22" rx="1" fill="#030B15"/>
+        <!-- Grafana dashboard on tablet -->
+        <rect x="631" y="132" width="14" height="6" rx="1" fill="#0F2B1A"/>
+        <polyline points="631,137 634,134 637,136 640,132 643,134 645,135" fill="none" stroke="#1DB954" stroke-width="0.8"/>
+        <rect x="631" y="140" width="6" height="5" rx="0.5" fill="#CC0000" opacity="0.8"/>
+        <rect x="639" y="142" width="6" height="3" rx="0.5" fill="#185FA5" opacity="0.8"/>
+        <text x="630" y="152" font-family="monospace" font-size="3.5" fill="#4A9EFF">LIVE OEE</text>
+        <!-- Left arm with clipboard -->
+        <rect x="567" y="132" width="10" height="35" rx="4" fill="#1F3A6E"/>
+        <!-- Clipboard -->
+        <rect x="547" y="126" width="20" height="26" rx="2" fill="white" stroke="#9BA4B8" stroke-width="0.8"/>
+        <rect x="553" y="123" width="8" height="5" rx="1" fill="#9BA4B8"/>
+        <line x1="550" y1="132" x2="564" y2="132" stroke="#9BA4B8" stroke-width="0.8"/>
+        <line x1="550" y1="136" x2="564" y2="136" stroke="#9BA4B8" stroke-width="0.8"/>
+        <line x1="550" y1="140" x2="564" y2="140" stroke="#9BA4B8" stroke-width="0.8"/>
+        <line x1="550" y1="144" x2="558" y2="144" stroke="#CC0000" stroke-width="0.8"/>
+        <text x="550" y="149" font-family="monospace" font-size="3.5" fill="#185FA5">Cpk✓</text>
+        <!-- Neck -->
+        <rect x="591" y="112" width="16" height="18" rx="3" fill="#2E6DA4"/>
+        <!-- Head -->
+        <circle cx="599" cy="105" r="18" fill="#2E6DA4"/>
+        <!-- Face details -->
+        <circle cx="594" cy="103" r="2.5" fill="white"/>
+        <circle cx="604" cy="103" r="2.5" fill="white"/>
+        <circle cx="594" cy="103" r="1.2" fill="#0A1228"/>
+        <circle cx="604" cy="103" r="1.2" fill="#0A1228"/>
+        <path d="M594 111 Q599 114 604 111" fill="none" stroke="white" stroke-width="1.2"/>
+        <!-- Eyebrows -->
+        <line x1="591" y1="99" x2="597" y2="98" stroke="white" stroke-width="1" opacity="0.6"/>
+        <line x1="601" y1="98" x2="607" y2="99" stroke="white" stroke-width="1" opacity="0.6"/>
+        <!-- Hard hat -->
+        <path d="M581 102 Q599 82 617 102" fill="#CC0000"/>
+        <rect x="580" y="101" width="38" height="5" rx="2" fill="#AA0000"/>
+        <!-- Hard hat brim -->
+        <rect x="577" y="104" width="44" height="3" rx="1.5" fill="#880000"/>
+        <!-- Hard hat logo -->
+        <text x="596" y="98" text-anchor="middle" font-family="monospace" font-size="5" fill="white" font-weight="bold">MTI</text>
+        <!-- Safety glasses -->
+        <rect x="588" y="101" width="8" height="4" rx="1" fill="rgba(100,200,255,0.3)" stroke="white" stroke-width="0.5"/>
+        <rect x="598" y="101" width="8" height="4" rx="1" fill="rgba(100,200,255,0.3)" stroke="white" stroke-width="0.5"/>
+        <line x1="596" y1="103" x2="598" y2="103" stroke="white" stroke-width="0.5"/>
+
+        <!-- ═══ CONVEYOR BELT ═══ -->
+        <rect x="168" y="202" width="210" height="10" rx="4" fill="#152238" stroke="#1E3A5F" stroke-width="1"/>
+        <rect x="168" y="202" width="210" height="4" rx="2" fill="#1A3050"/>
+        <circle cx="178" cy="207" r="6" fill="#0F1B35" stroke="#1E3A5F" stroke-width="1"/>
+        <circle cx="368" cy="207" r="6" fill="#0F1B35" stroke="#1E3A5F" stroke-width="1"/>
+        <!-- Parts on belt -->
+        <rect x="200" y="196" width="20" height="10" rx="2" fill="#CC0000" opacity="0.9"/>
+        <text x="210" y="203" text-anchor="middle" font-family="monospace" font-size="5" fill="white">EV</text>
+        <rect x="240" y="196" width="20" height="10" rx="2" fill="#185FA5" opacity="0.9"/>
+        <text x="250" y="203" text-anchor="middle" font-family="monospace" font-size="5" fill="white">GM</text>
+        <rect x="280" y="196" width="20" height="10" rx="2" fill="#854F0B" opacity="0.9"/>
+        <text x="290" y="203" text-anchor="middle" font-family="monospace" font-size="5" fill="white">SH</text>
+        <rect x="320" y="196" width="20" height="10" rx="2" fill="#0F6E56" opacity="0.9"/>
+        <text x="330" y="203" text-anchor="middle" font-family="monospace" font-size="5" fill="white">✓</text>
+
+        <!-- ═══ DATA DASHBOARD (right side) ═══ -->
+        <rect x="570" y="38" width="140" height="120" rx="6" fill="#050E1A" stroke="#1E3A5F" stroke-width="1"/>
+        <rect x="570" y="38" width="140" height="16" rx="6" fill="#0F1B35"/>
+        <text x="640" y="49" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)" font-weight="500">LIVE PRODUCTION DASHBOARD</text>
+        <!-- KPI rows -->
+        <text x="578" y="66" font-family="monospace" font-size="7" fill="#9BA4B8">SCRAP RATE</text>
+        <text x="700" y="66" text-anchor="end" font-family="monospace" font-size="7" fill="#1DB954" font-weight="bold">0.8%</text>
+        <rect x="578" y="68" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="68" width="2" height="3" rx="1.5" fill="#1DB954"/>
+
+        <text x="578" y="82" font-family="monospace" font-size="7" fill="#9BA4B8">OEE</text>
+        <text x="700" y="82" text-anchor="end" font-family="monospace" font-size="7" fill="#4A9EFF" font-weight="bold">84.1%</text>
+        <rect x="578" y="84" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="84" width="103" height="3" rx="1.5" fill="#4A9EFF"/>
+
+        <text x="578" y="98" font-family="monospace" font-size="7" fill="#9BA4B8">CPK (TESLA)</text>
+        <text x="700" y="98" text-anchor="end" font-family="monospace" font-size="7" fill="#1DB954" font-weight="bold">1.71</text>
+        <rect x="578" y="100" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="100" width="104" height="3" rx="1.5" fill="#1DB954"/>
+
+        <text x="578" y="114" font-family="monospace" font-size="7" fill="#9BA4B8">CPK (GM)</text>
+        <text x="700" y="114" text-anchor="end" font-family="monospace" font-size="7" fill="#4A9EFF" font-weight="bold">1.42</text>
+        <rect x="578" y="116" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="116" width="86" height="3" rx="1.5" fill="#4A9EFF"/>
+
+        <text x="578" y="130" font-family="monospace" font-size="7" fill="#9BA4B8">CPK (ALLISON)</text>
+        <text x="700" y="130" text-anchor="end" font-family="monospace" font-size="7" fill="#E8A020" font-weight="bold">1.55</text>
+        <rect x="578" y="132" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="132" width="94" height="3" rx="1.5" fill="#E8A020"/>
+
+        <text x="578" y="146" font-family="monospace" font-size="7" fill="#9BA4B8">THROUGHPUT</text>
+        <text x="700" y="146" text-anchor="end" font-family="monospace" font-size="7" fill="#1DB954" font-weight="bold">+30%</text>
+        <rect x="578" y="148" width="122" height="3" rx="1.5" fill="#0A1228"/>
+        <rect x="578" y="148" width="122" height="3" rx="1.5" fill="#1DB954"/>
+
+        <!-- Bottom label -->
+        <text x="360" y="270" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.2)">Metal Technologies Inc. · Bloomington, IN · Tesla Semi · GM L6 · Allison Stator Housing</text>
+      </svg>
+    </div>
+    <div class="sh"><h2>About</h2><span class="sh-tag">Background</span></div>
+    <div class="qt">
+      <div class="qtxt">"I started as a Process Engineer at Metal Technologies Inc. in December 2021 — machining EV drive unit components for the Tesla Semi program from day one. For the past 7 years I've held to the highest quality, tolerance, and delivery standards in the industry. Every micron, every OEE point, every on-time delivery. I'm ready to step inside the factory and own those outcomes directly."</div>
+      <div class="qat">— Santosh Singh Rathore · Process Engineer · Metal Technologies Inc.</div>
+    </div>
+    <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div><div style="font-size:0.68rem;color:var(--silver);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.35rem;">The Engineer</div><div style="font-size:0.82rem;color:#444;line-height:1.8;">Process Engineer at Metal Technologies Inc. since December 2021, running Tesla Semi, GM Engine Block, and Allison Stator Housing programs. 7 years total manufacturing experience. I go back to first principles, let data lead, and fix problems permanently — not temporarily.</div></div>
+      <div><div style="font-size:0.68rem;color:var(--silver);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.35rem;">The Person</div><div style="font-size:0.82rem;color:#444;line-height:1.8;">Husband and father. Cricket player. Passionate cook. MS Mechanical Engineering, University of Illinois at Chicago, 2021.</div></div>
+    </div>
+    <div class="sh" style="margin-top:1.4rem;"><h2>Education</h2></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:0.65rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.55rem;border-bottom:1px solid var(--border);"><div><div style="font-weight:500;font-size:0.88rem;">MS, Mechanical Engineering</div><div style="font-size:0.75rem;color:var(--silver);">University of Illinois at Chicago</div></div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--red);">2021</div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-weight:500;font-size:0.88rem;">B.Tech, Mechanical Engineering</div><div style="font-size:0.75rem;color:var(--silver);">Jaypee University of Engineering and Technology</div></div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--red);">2016</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WINS -->
+<section id="wins">
+  <div class="content">
+    <div class="sh"><h2>Success Highlights</h2><span class="sh-tag">Verified Results</span></div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">OEE Improvement Breakdown</div>
+        <svg width="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#F4F5F8" stroke-width="20"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#CC0000" stroke-width="20" stroke-dasharray="31.4 282.7" stroke-dashoffset="0" transform="rotate(-90 75 75)"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#E8A020" stroke-width="20" stroke-dasharray="62.8 282.7" stroke-dashoffset="-31.4" transform="rotate(-90 75 75)"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#0F6E56" stroke-width="20" stroke-dasharray="94.2 282.7" stroke-dashoffset="-94.2" transform="rotate(-90 75 75)"/>
+          <text x="75" y="70" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="18" fill="#0F1B35">20%</text>
+          <text x="75" y="83" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">Total OEE ↑</text>
+          <rect x="135" y="45" width="8" height="8" rx="2" fill="#CC0000"/><text x="147" y="53" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Availability +10%</text>
+          <rect x="135" y="62" width="8" height="8" rx="2" fill="#E8A020"/><text x="147" y="70" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Performance +20%</text>
+          <rect x="135" y="79" width="8" height="8" rx="2" fill="#0F6E56"/><text x="147" y="87" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Quality losses ↓</text>
+        </svg>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Expertise Distribution</div>
+        <svg width="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#F4F5F8" stroke-width="20"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#CC0000" stroke-width="20" stroke-dasharray="98.96 282.7" stroke-dashoffset="0" transform="rotate(-90 75 75)"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#185FA5" stroke-width="20" stroke-dasharray="84.82 282.7" stroke-dashoffset="-98.96" transform="rotate(-90 75 75)"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#E8A020" stroke-width="20" stroke-dasharray="56.55 282.7" stroke-dashoffset="-183.78" transform="rotate(-90 75 75)"/>
+          <circle cx="75" cy="75" r="50" fill="none" stroke="#0F6E56" stroke-width="20" stroke-dasharray="42.41 282.7" stroke-dashoffset="-240.33" transform="rotate(-90 75 75)"/>
+          <text x="75" y="70" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14" fill="#0F1B35">7 yrs</text>
+          <text x="75" y="83" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">Experience</text>
+          <rect x="135" y="35" width="8" height="8" rx="2" fill="#CC0000"/><text x="147" y="43" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Process 35%</text>
+          <rect x="135" y="50" width="8" height="8" rx="2" fill="#185FA5"/><text x="147" y="58" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Quality 30%</text>
+          <rect x="135" y="65" width="8" height="8" rx="2" fill="#E8A020"/><text x="147" y="73" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Lean 20%</text>
+          <rect x="135" y="80" width="8" height="8" rx="2" fill="#0F6E56"/><text x="147" y="88" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35">Data 15%</text>
+        </svg>
+      </div>
+    </div>
+    <div class="chart-card" style="margin-bottom:1rem;">
+      <div class="chart-title">Key Metrics — Before vs After Process Redesign</div>
+      <div class="bar-chart" id="barChart"></div>
+    </div>
+    <div class="hg">
+      <div class="hc"><span class="hi">📉</span><span class="hn">40%</span><span class="hl">Scrap Reduction</span><div class="hd">38% → below 1%. Root cause found and eliminated — not patched.</div></div>
+      <div class="hc go"><span class="hi">⚡</span><span class="hn" style="color:var(--gold);">&gt;1.67</span><span class="hl">Cpk Achieved</span><div class="hd">Baseline 0.72. Sustained above 1.33 from first production run.</div></div>
+      <div class="hc gr"><span class="hi">📈</span><span class="hn" style="color:#0F6E56;">20%</span><span class="hl">OEE Improvement</span><div class="hd">Availability +10%, Performance +20% across three programs.</div></div>
+    </div>
+    <div class="hg">
+      <div class="hc"><span class="hi">💰</span><span class="hn">$10K</span><span class="hl">Saved Per Week</span><div class="hd">ROI positive within 2 weeks. No capital investment needed.</div></div>
+      <div class="hc go"><span class="hi">🚀</span><span class="hn" style="color:var(--gold);">30%</span><span class="hl">Throughput Gain</span><div class="hd">Zero headcount. Zero new equipment added.</div></div>
+      <div class="hc gr"><span class="hi">⏱️</span><span class="hn" style="color:#0F6E56;">21%</span><span class="hl">Cycle Time ↓</span><div class="hd">Each change validated with Cp/Cpk in Minitab before release.</div></div>
+    </div>
+    <div class="sh"><h2>More Wins</h2></div>
+    <div class="sc"><div class="sh2"><div class="sn">01</div><div><div class="st">60–70% Crack Rejection Crisis — Contained & Resolved</div><div class="ss">GM Program · High-Volume CNC Line</div></div></div><div class="sb"><div class="sr">Incoming castings had 60–70% crack rejection rate. Used SQL to segment CMM data by batch and supplier, identified root cause as improper heat treatment at casting source. Issued 8D, quarantined all suspect material via RDAC, defined 100% incoming CMM inspection protocol. <strong>Zero customer escapes. Supplier corrective action implemented and sustained.</strong></div><div class="tags"><span class="tag">8D</span><span class="tag">SQL Segmentation</span><span class="tag">CMM Inspection</span><span class="tag">Grafana</span><span class="tag">RDAC</span><span class="tag">Supplier Management</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">02</div><div><div class="st">Seal Mix-Up Poka-Yoke — Zero Recurrence</div><div class="ss">Tesla Semi · Leak Test Line</div></div></div><div class="sb"><div class="sr">Wrong seals being loaded into leak test fixtures causing false failures and scrapped assemblies. Traced root cause to identical-looking seal SKUs stored adjacent on the line. Implemented color-coded seal storage, physical poka-yoke on fixture loading, and barcode scan verification before cycle start. <strong>Zero recurrence. Plant-wide read-across completed to all similar lines.</strong></div><div class="tags"><span class="tag">8D</span><span class="tag">Poka-Yoke</span><span class="tag">Barcode Verification</span><span class="tag">RDAC Serial Tracking</span><span class="tag">Visual Standard Work</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">03</div><div><div class="st">In-House Assembly COPQ Business Case — Approved</div><div class="ss">Tesla Semi · Metal Technologies Inc.</div></div></div><div class="sb"><div class="sr">Assembly was being outsourced causing transportation damage, longer lead times, and loss of process control. Built full COPQ analysis using SQL production data and Grafana dashboards showing $X weekly cost of external assembly plus damage rate. Presented ROI model to management. <strong>In-house assembly approved. Transportation damage eliminated. OEE and traceability improved from day one.</strong></div><div class="tags"><span class="tag">COPQ Analysis</span><span class="tag">Lean Layout</span><span class="tag">Capital Justification</span><span class="tag">SQL</span><span class="tag">Grafana</span><span class="tag">ROI Modeling</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">04</div><div><div class="st">3 of 5 CNCs Down Simultaneously — No Quality Escapes</div><div class="ss">Production Crisis · 40% Capacity · Customer Delivery at Risk</div></div></div><div class="sb"><div class="sr">Three of five CNC machines failed simultaneously — spindle runout, fixture failure, mechanical breakdown. Capacity dropped to 40%. Immediately quarantined all suspect parts from down machines and verified serial traceability in RDAC. Ran rapid process verification on running machines — tool check, CMM verification, SPC active. Triaged recovery: quick win first, then fixture repair, then external maintenance. Adjusted production schedule in real time using Grafana OEE dashboards. <strong>All three machines recovered in priority order. Zero quality escapes. Customer delivery held without exception.</strong></div><div class="tags"><span class="tag">Crisis Triage</span><span class="tag">Containment</span><span class="tag">Grafana Real-Time</span><span class="tag">RDAC</span><span class="tag">Production Scheduling</span><span class="tag">CMM Verification</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">05</div><div><div class="st">GD&T Print Review — 5–6 Ambiguities Caught Pre-Launch</div><div class="ss">Tesla NPI · Design Collaboration</div></div></div><div class="sb"><div class="sr">During NPI print review for a new Tesla program, identified 5–6 features with missing or ambiguous GD&T callouts — including a critical bore with diameter tolerance but no position callout to datum reference frame, making CMM inspection impossible. Documented each issue with the specific machining challenge and inspection gap it created. Presented to Tesla design engineers framed as risk to their launch timeline. <strong>All features updated before production release. Part launched clean and on schedule. Tesla design team now requests manufacturability reviews proactively before finalizing drawings.</strong></div><div class="tags"><span class="tag">DFM</span><span class="tag">GD&T</span><span class="tag">NPI Print Review</span><span class="tag">Risk Prevention</span><span class="tag">Design Collaboration</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">06</div><div><div class="st">Intern Developed into Full-Time Process Engineer</div><div class="ss">Training & Mentorship · Metal Technologies Inc.</div></div></div><div class="sb"><div class="sr">Engineering intern joined with limited practical manufacturing experience. Built a structured development plan — machining fundamentals, GD&T, CMM inspection, Datapage, Minitab — and put them on live production problems from day one using 5 Why and DMAIC as the framework. Used the training process to simultaneously audit and improve our work instructions. <strong>Intern hired full-time as process engineer. Work instructions improved as a byproduct. Training method adopted for all future onboarding.</strong></div><div class="tags"><span class="tag">Mentorship</span><span class="tag">Knowledge Transfer</span><span class="tag">Work Instructions</span><span class="tag">DMAIC</span><span class="tag">Datapage</span><span class="tag">Minitab</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">07</div><div><div class="st">Thermal Cell Design — Temperature-Controlled Assembly Zone</div><div class="ss">Tesla Semi · Process Cell Redesign</div></div></div><div class="sb"><div class="sr">After diagnosing thermal distortion as root cause of Cpk failures, the new process required the part to cool to 68–70°F ±2°C before final machining. Designed a dedicated temperature-controlled cooling soak area adjacent to assembly — eliminating the transport loop, controlling ambient temperature, and adding a go/no-go temperature indicator before parts could advance to CNC. <strong>Datum stability achieved. Post-assembly variation eliminated entirely as a failure category. Cpk improved from 1.33 to above 1.67 after cell implementation.</strong></div><div class="tags"><span class="tag">Cell Design</span><span class="tag">Thermal Control</span><span class="tag">Process Engineering</span><span class="tag">Lean Layout</span><span class="tag">Error-Proofing</span></div></div></div>
+
+    <div class="sc"><div class="sh2"><div class="sn">08</div><div><div class="st">FA Gauging System — Eliminated Manual Inspection Bottleneck</div><div class="ss">Tesla Semi · GM L6 · OEE Improvement</div></div></div><div class="sb"><div class="sr">Manual CMM inspection after each operation was creating a bottleneck — parts queuing for inspection, operators idle, OEE taking a performance hit. Designed and implemented in-line functional audit (FA) gauging with go/no-go fixtures at critical operations. Reduced inspection time from 12 minutes per part to under 90 seconds. <strong>5 hours per week of unplanned downtime eliminated. Throughput improved 30%. Parts flow continuously without inspection queues.</strong></div><div class="tags"><span class="tag">FA Gauging</span><span class="tag">In-Line Inspection</span><span class="tag">OEE Improvement</span><span class="tag">Lean</span><span class="tag">Cycle Time Reduction</span></div></div></div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <div class="content">
+    <div class="sh"><h2>Signature Project</h2><span class="sh-tag">Tesla Semi · EV Drive Unit</span></div>
+    <div class="factory-wrap">
+      <svg width="100%" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="200" fill="#0A1228"/>
+        <line x1="0" y1="160" x2="700" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <text x="10" y="25" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(204,0,0,0.7)" font-weight="500">OLD SEQUENCE</text>
+        <rect x="10" y="35" width="80" height="35" rx="4" fill="#1A0A0A" stroke="#660000" stroke-width="1"/>
+        <text x="50" y="50" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#FF6666" font-weight="500">OP10</text>
+        <text x="50" y="62" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,102,102,0.6)">Final Datums</text>
+        <line x1="10" y1="35" x2="90" y2="70" stroke="rgba(204,0,0,0.4)" stroke-width="1.5"/>
+        <line x1="90" y1="35" x2="10" y2="70" stroke="rgba(204,0,0,0.4)" stroke-width="1.5"/>
+        <text x="95" y="56" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(204,0,0,0.5)">→</text>
+        <rect x="110" y="35" width="80" height="35" rx="4" fill="#1A0A0A" stroke="#660000" stroke-width="1"/>
+        <text x="150" y="50" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#FF6666" font-weight="500">OP20</text>
+        <text x="150" y="62" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,102,102,0.6)">Final Bores</text>
+        <line x1="110" y1="35" x2="190" y2="70" stroke="rgba(204,0,0,0.4)" stroke-width="1.5"/>
+        <line x1="190" y1="35" x2="110" y2="70" stroke="rgba(204,0,0,0.4)" stroke-width="1.5"/>
+        <text x="195" y="56" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(204,0,0,0.5)">→</text>
+        <rect x="210" y="35" width="90" height="35" rx="4" fill="#1A0A0A" stroke="#FF4400" stroke-width="1.5"/>
+        <text x="255" y="50" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#FF8866" font-weight="500">350°F Assembly</text>
+        <text x="255" y="62" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,136,102,0.6)">⚠ Distortion</text>
+        <text x="305" y="56" font-family="DM Sans,sans-serif" font-size="12" fill="rgba(204,0,0,0.5)">→</text>
+        <rect x="320" y="35" width="70" height="35" rx="4" fill="#3A0000" stroke="#CC0000" stroke-width="2"/>
+        <text x="355" y="50" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#FF4444" font-weight="500">38% SCRAP</text>
+        <text x="355" y="62" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(255,68,68,0.7)">Cpk 0.72</text>
+        <text x="10" y="110" font-family="DM Sans,sans-serif" font-size="10" fill="rgba(29,185,84,0.9)" font-weight="500">NEW SEQUENCE</text>
+        <rect x="10" y="120" width="65" height="32" rx="4" fill="#0A1F0A" stroke="#0F6E56" stroke-width="1.5"/>
+        <text x="42" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#4ADE80" font-weight="500">OP1 Rough</text>
+        <text x="42" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(74,222,128,0.6)">Leave stock</text>
+        <text x="78" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="88" y="120" width="65" height="32" rx="4" fill="#0A1F0A" stroke="#0F6E56" stroke-width="1.5"/>
+        <text x="120" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#4ADE80" font-weight="500">OP5 Rough</text>
+        <text x="120" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(74,222,128,0.6)">Leave stock</text>
+        <text x="156" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="166" y="120" width="80" height="32" rx="4" fill="#1A0F00" stroke="#E8A020" stroke-width="1.5"/>
+        <text x="206" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#FCA" font-weight="500">350°F Assembly</text>
+        <text x="206" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(252,170,100,0.6)">Thermal event</text>
+        <text x="250" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="260" y="120" width="70" height="32" rx="4" fill="#0A1F0A" stroke="#0F6E56" stroke-width="1.5"/>
+        <text x="295" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#4ADE80" font-weight="500">Cool 68–70°F</text>
+        <text x="295" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(74,222,128,0.6)">Stabilize</text>
+        <text x="333" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="343" y="120" width="65" height="32" rx="4" fill="#0A1F0A" stroke="#0F6E56" stroke-width="1.5"/>
+        <text x="375" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#4ADE80" font-weight="500">OP10 Final</text>
+        <text x="375" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(74,222,128,0.6)">Stable part</text>
+        <text x="411" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="421" y="120" width="65" height="32" rx="4" fill="#0A1F0A" stroke="#0F6E56" stroke-width="1.5"/>
+        <text x="453" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#4ADE80" font-weight="500">OP20 Final</text>
+        <text x="453" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(74,222,128,0.6)">Validated</text>
+        <text x="489" y="140" font-family="DM Sans,sans-serif" font-size="11" fill="#0F6E56">→</text>
+        <rect x="499" y="120" width="80" height="32" rx="4" fill="#0A2A15" stroke="#1DB954" stroke-width="2"/>
+        <text x="539" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#1DB954" font-weight="500">Cpk &gt;1.67 ✓</text>
+        <text x="539" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(29,185,84,0.7)">&lt;1% scrap</text>
+        <text x="350" y="192" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.25)">EV Drive Unit Block · Metal Technologies Inc. · Tesla Semi Program</text>
+      </svg>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:0.65rem;">
+      <div class="card" style="text-align:center;padding:0.75rem;margin:0;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--red);">40%</div><div style="font-size:0.62rem;color:var(--silver);text-transform:uppercase;">Scrap ↓</div></div>
+      <div class="card" style="text-align:center;padding:0.75rem;margin:0;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--red);">&gt;1.67</div><div style="font-size:0.62rem;color:var(--silver);text-transform:uppercase;">Final Cpk</div></div>
+      <div class="card" style="text-align:center;padding:0.75rem;margin:0;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--red);">20%</div><div style="font-size:0.62rem;color:var(--silver);text-transform:uppercase;">OEE ↑</div></div>
+      <div class="card" style="text-align:center;padding:0.75rem;margin:0;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--red);">$10K</div><div style="font-size:0.62rem;color:var(--silver);text-transform:uppercase;">Saved / Week</div></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Cpk Journey — Before & After Process Redesign</div>
+      <svg width="100%" viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg">
+        <line x1="60" y1="20" x2="60" y2="130" stroke="#E8E8E8" stroke-width="1"/>
+        <line x1="60" y1="130" x2="580" y2="130" stroke="#E8E8E8" stroke-width="1"/>
+        <line x1="60" y1="75" x2="580" y2="75" stroke="#E8E8E8" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="60" y1="50" x2="580" y2="50" stroke="#E8E8E8" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="60" y1="100" x2="580" y2="100" stroke="#E8E8E8" stroke-width="0.5" stroke-dasharray="4"/>
+        <text x="55" y="24" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#9BA4B8">2.0</text>
+        <text x="55" y="54" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#9BA4B8">1.67</text>
+        <text x="55" y="79" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#9BA4B8">1.33</text>
+        <text x="55" y="104" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#9BA4B8">1.0</text>
+        <text x="55" y="130" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#9BA4B8">0.72</text>
+        <line x1="60" y1="75" x2="580" y2="75" stroke="#E8A020" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="565" y="72" font-family="DM Sans,sans-serif" font-size="8" fill="#E8A020">Min 1.33</text>
+        <polyline points="70,128 100,125 130,127 160,124 190,128 220,123 250,126 280,127" fill="none" stroke="#CC0000" stroke-width="2"/>
+        <line x1="290" y1="20" x2="290" y2="130" stroke="#9BA4B8" stroke-width="1" stroke-dasharray="4"/>
+        <text x="292" y="35" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">Redesign</text>
+        <polyline points="300,120 320,105 340,90 360,72 380,60 400,55 420,54 450,53 480,52 510,53 540,52 570,51" fill="none" stroke="#0F6E56" stroke-width="2"/>
+        <circle cx="400" cy="55" r="3" fill="#0F6E56"/>
+        <circle cx="450" cy="53" r="3" fill="#0F6E56"/>
+        <circle cx="540" cy="52" r="3" fill="#0F6E56"/>
+        <text x="170" y="118" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#CC0000" font-weight="500">Before: Cpk 0.72</text>
+        <text x="450" y="46" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#0F6E56" font-weight="500">After: Cpk &gt;1.67 ✓</text>
+        <text x="175" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">Original Process</text>
+        <text x="440" y="145" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">Redesigned Process</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="content">
+    <div class="sh"><h2>Experience</h2><span class="sh-tag">7 Years</span></div>
+    <div class="chart-card" style="margin-bottom:1rem;">
+      <div class="chart-title">Career Timeline</div>
+      <svg width="100%" viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="40" x2="560" y2="40" stroke="#E8E8E8" stroke-width="2"/>
+        <circle cx="60" cy="40" r="6" fill="#9BA4B8"/>
+        <text x="60" y="28" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">2016</text>
+        <text x="60" y="58" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#9BA4B8">Design Eng</text>
+        <circle cx="155" cy="40" r="6" fill="#9BA4B8"/>
+        <text x="155" y="28" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">2017</text>
+        <text x="155" y="58" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#9BA4B8">Lead Eng</text>
+        <circle cx="250" cy="40" r="6" fill="#9BA4B8"/>
+        <text x="250" y="28" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#9BA4B8">2019</text>
+        <circle cx="345" cy="40" r="6" fill="#185FA5"/>
+        <text x="345" y="28" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#185FA5">2021</text>
+        <text x="345" y="58" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#185FA5">MS UIC</text>
+        <circle cx="380" cy="40" r="8" fill="#CC0000"/>
+        <text x="380" y="58" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#CC0000">MTI Start</text>
+        <circle cx="540" cy="40" r="8" fill="#0F6E56"/>
+        <text x="540" y="28" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#0F6E56">2026</text>
+        <text x="540" y="58" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#0F6E56">Present</text>
+        <rect x="372" y="35" width="175" height="10" rx="5" fill="rgba(204,0,0,0.15)"/>
+      </svg>
+    </div>
+    <div class="tl">
+      <div class="ti">
+        <div class="td"></div>
+        <div class="card" style="margin:0;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.45rem;">
+            <div><div class="th">Process Engineer</div><div class="tc">Metal Technologies Inc.</div><div class="tdt">Dec 2021 – Present · Bloomington, IN</div></div>
+            <span style="font-size:0.62rem;background:#FFF0F0;color:#CC0000;border:1px solid #FFCCCC;padding:2px 7px;border-radius:10px;font-weight:500;">Current</span>
+          </div>
+          <ul class="tp">
+            <li>EV drive unit redesign → 40% scrap ↓, Cpk 0.72 → &gt;1.67, $10K/week saved, ROI in 2 weeks</li>
+            <li>OEE +20% across Tesla Semi, GM L6, Allison Stator Housing · 21% cycle time ↓ · 30% throughput ↑</li>
+            <li>PFMEA · Control Plans · PPAP · FAL · RDAC traceability · Oracle ERP · cell redesign · fixture design</li>
+            <li>Operator training and standard work before every process change — no exceptions</li>
+          </ul>
+          <div class="pbs"><span class="pb pbr">Tesla Semi</span><span class="pb pbb">GM L6</span><span class="pb pbg">Allison</span><span class="pb pbgr">Ford EV</span></div>
+        </div>
+      </div>
+      <div class="ti"><div class="td sm"></div><div class="card" style="margin:0;"><div class="th">Graduate Research Assistant</div><div class="tc">University of Illinois at Chicago</div><div class="tdt">2021</div><ul class="tp" style="margin-top:0.3rem;"><li>Generative design research · CFD & FEA using MATLAB · technical documentation</li></ul></div></div>
+      <div class="ti"><div class="td sm"></div><div class="card" style="margin:0;"><div class="th">Mechanical Lead Engineer</div><div class="tc">Chaos Design India</div><div class="tdt">2017 – 2019</div><ul class="tp" style="margin-top:0.3rem;"><li>Led 6 product launches concept to production — DFM, process planning, manufacturing readiness</li></ul></div></div>
+      <div class="ti"><div class="td sm"></div><div class="card" style="margin:0;"><div class="th">Mechanical Design Engineer</div><div class="tc">Chaos Design India</div><div class="tdt">2016 – 2017</div><ul class="tp" style="margin-top:0.3rem;"><li>90+ components · SolidWorks, AutoCAD, NX · DFM and GD&T · fixtures and tooling</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="content">
+    <div class="sh"><h2>Skills</h2><span class="sh-tag">Technical Stack</span></div>
+    <div class="chart-card" style="margin-bottom:1rem;">
+      <div class="chart-title">Skill Strength Radar</div>
+      <svg width="100%" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="200,40 260,75 260,145 200,180 140,145 140,75" fill="none" stroke="#E8E8E8" stroke-width="1"/>
+        <polygon points="200,62 248,85 248,135 200,158 152,135 152,85" fill="none" stroke="#E8E8E8" stroke-width="1"/>
+        <polygon points="200,84 236,95 236,125 200,136 164,125 164,95" fill="none" stroke="#E8E8E8" stroke-width="1"/>
+        <line x1="200" y1="110" x2="200" y2="40" stroke="#E8E8E8" stroke-width="0.8"/>
+        <line x1="200" y1="110" x2="260" y2="75" stroke="#E8E8E8" stroke-width="0.8"/>
+        <line x1="200" y1="110" x2="260" y2="145" stroke="#E8E8E8" stroke-width="0.8"/>
+        <line x1="200" y1="110" x2="200" y2="180" stroke="#E8E8E8" stroke-width="0.8"/>
+        <line x1="200" y1="110" x2="140" y2="145" stroke="#E8E8E8" stroke-width="0.8"/>
+        <line x1="200" y1="110" x2="140" y2="75" stroke="#E8E8E8" stroke-width="0.8"/>
+        <polygon points="200,44 258,78 256,141 200,172 145,141 143,78" fill="rgba(204,0,0,0.15)" stroke="#CC0000" stroke-width="2"/>
+        <circle cx="200" cy="44" r="4" fill="#CC0000"/>
+        <circle cx="258" cy="78" r="4" fill="#CC0000"/>
+        <circle cx="256" cy="141" r="4" fill="#CC0000"/>
+        <circle cx="200" cy="172" r="4" fill="#CC0000"/>
+        <circle cx="145" cy="141" r="4" fill="#CC0000"/>
+        <circle cx="143" cy="78" r="4" fill="#CC0000"/>
+        <text x="200" y="34" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Process Eng</text>
+        <text x="275" y="76" text-anchor="start" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Quality</text>
+        <text x="272" y="148" text-anchor="start" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Data</text>
+        <text x="200" y="195" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Manufacturing</text>
+        <text x="128" y="148" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Lean</text>
+        <text x="132" y="76" text-anchor="end" font-family="DM Sans,sans-serif" font-size="9" fill="#0F1B35" font-weight="500">Problem Solving</text>
+      </svg>
+    </div>
+    <div class="sg">
+      <div class="sk"><div class="skt">Quality Engineering</div><div class="sks"><span class="skg">FMEA/pFMEA</span><span class="skg">Control Plan</span><span class="skg">SPC (Cp/Cpk)</span><span class="skg">PPAP</span><span class="skg">CAPA</span><span class="skg">GD&T</span><span class="skg">8D</span></div></div>
+      <div class="sk"><div class="skt">Problem Solving</div><div class="sks"><span class="skg">DMAIC</span><span class="skg">Root Cause</span><span class="skg">5 Why</span><span class="skg">Ishikawa</span><span class="skg">DOE</span><span class="skg">First Principles</span></div></div>
+      <div class="sk"><div class="skt">Manufacturing</div><div class="sks"><span class="skg">CNC Machining</span><span class="skg">Semi-Automated</span><span class="skg">OEE</span><span class="skg">Cell Layout</span><span class="skg">Fixture Design</span><span class="skg">NPI · FAL</span></div></div>
+      <div class="sk"><div class="skt">Lean</div><div class="sks"><span class="skg">Value Stream Mapping</span><span class="skg">Kaizen</span><span class="skg">5S</span><span class="skg">Poka-Yoke</span><span class="skg">Line Balance</span><span class="skg">LSSGB</span></div></div>
+      <div class="sk"><div class="skt">Data & Analysis</div><div class="sks"><span class="skg">Minitab</span><span class="skg">SQL</span><span class="skg">Datapage</span><span class="skg">Grafana</span><span class="skg">Python</span></div></div>
+      <div class="sk"><div class="skt">Systems & CAD</div><div class="sks"><span class="skg">Oracle ERP</span><span class="skg">RDAC</span><span class="skg">MTlinki</span><span class="skg">SolidWorks</span><span class="skg">AutoCAD</span><span class="skg">NX</span></div></div>
+    </div>
+    <div class="sh" style="margin-top:1.1rem;"><h2>Programs</h2></div>
+    <div class="pg">
+      <div class="pc"><div style="font-size:1.2rem;">⚡</div><div><div class="pn">Tesla Semi</div><div class="ps">EV Drive Unit · 2021–Present</div></div></div>
+      <div class="pc"><div style="font-size:1.2rem;">🚗</div><div><div class="pn">GM L6</div><div class="ps">Powertrain Components</div></div></div>
+      <div class="pc"><div style="font-size:1.2rem;">⚙️</div><div><div class="pn">Allison Transmission</div><div class="ps">Stator Housing</div></div></div>
+      <div class="pc"><div style="font-size:1.2rem;">🔋</div><div><div class="pn">Ford EV</div><div class="ps">NPI & Ramp Support</div></div></div>
+    </div>
+    <div class="sh" style="margin-top:1.1rem;"><h2>Certifications</h2></div>
+    <div class="cg">
+      <div class="cc"><div style="font-size:1.1rem;">🎯</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">Lean Six Sigma Green Belt</div></div>
+      <div class="cc"><div style="font-size:1.1rem;">📐</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">GD&T Certified</div></div>
+      <div class="cc"><div style="font-size:1.1rem;">⚙️</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">FMEA Certified</div></div>
+      <div class="cc"><div style="font-size:1.1rem;">🔷</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">SolidWorks</div></div>
+      <div class="cc"><div style="font-size:1.1rem;">🚀</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">Agile</div></div>
+      <div class="cc"><div style="font-size:1.1rem;">📊</div><div style="font-size:0.72rem;font-weight:500;margin-top:0.3rem;">Minitab SPC</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="content">
+    <div class="sh"><h2>Contact</h2><span class="sh-tag">Let's Connect</span></div>
+    <div class="qt">
+      <div class="qtxt">"First Principles + Data + People = Capability, Scalability, Production-Ready"</div>
+      <div class="qat">— Core engineering philosophy</div>
+    </div>
+    <div class="ctg">
+      <div class="cti"><div class="cticon">📞</div><div><div class="ctl">Phone</div><div class="ctv">312-810-0079</div></div></div>
+      <div class="cti"><div class="cticon">✉️</div><div><div class="ctl">Email</div><div class="ctv" style="font-size:0.7rem;">rathore.santoshsingh01@gmail.com</div></div></div>
+      <div class="cti"><div class="cticon">🔗</div><div><div class="ctl">LinkedIn</div><div class="ctv">linkedin.com/in/ss-rathore</div></div></div>
+      <div class="cti"><div class="cticon">📍</div><div><div class="ctl">Location</div><div class="ctv">Bloomington, IN · Open to Relocation</div></div></div>
+    </div>
+    <div class="card" style="margin-top:0.65rem;">
+      <div style="font-weight:500;font-size:0.88rem;margin-bottom:0.45rem;">What I'm Looking For</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.45rem;margin-bottom:0.55rem;">
+        <div style="font-size:0.76rem;padding:5px 8px;background:var(--light);border-radius:5px;text-align:center;border:1px solid var(--border);">Process Engineer</div>
+        <div style="font-size:0.76rem;padding:5px 8px;background:var(--light);border-radius:5px;text-align:center;border:1px solid var(--border);">Manufacturing Engineer</div>
+        <div style="font-size:0.76rem;padding:5px 8px;background:var(--light);border-radius:5px;text-align:center;border:1px solid var(--border);">Quality Engineer</div>
+      </div>
+      <div style="font-size:0.76rem;color:var(--silver);">Open anywhere in the US · Tier 2 cities preferred · H1B transfer, no new cap · Available immediately</div>
+    </div>
+  </div>
+</section>
+
+<footer>Santosh Singh Rathore · Process Engineer · Metal Technologies Inc. · <span>May 2026</span></footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  window.scrollTo(0,52);
+}
+const bars=[
+  {label:'Scrap Rate',before:38,after:1,unit:'%',color:'#0F6E56'},
+  {label:'OEE',before:65,after:85,unit:'%',color:'#0F6E56'},
+  {label:'Cpk x100',before:72,after:167,unit:'',color:'#185FA5',max:200},
+  {label:'Throughput',before:70,after:100,unit:'%',color:'#E8A020'},
+];
+const bc=document.getElementById('barChart');
+bars.forEach(b=>{
+  const max=b.max||100;
+  const bw=Math.round((b.before/max)*100);
+  const aw=Math.round((b.after/max)*100);
+  bc.innerHTML+=`<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+    <span style="font-size:0.65rem;color:#9BA4B8;width:75px;flex-shrink:0;text-align:right;">${b.label}</span>
+    <div style="flex:1;">
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+        <span style="font-size:0.6rem;color:#9BA4B8;width:30px;">Before</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${bw}%;background:#FF6666;">${b.before}${b.unit}</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <span style="font-size:0.6rem;color:#9BA4B8;width:30px;">After</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${aw}%;background:${b.color};">${b.after}${b.unit}</div></div>
+      </div>
+    </div>
+  </div>`;
+});
+</script>
+</body>
+</html>
